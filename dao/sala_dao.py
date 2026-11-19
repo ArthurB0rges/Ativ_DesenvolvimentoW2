@@ -10,6 +10,11 @@ class SalaDAO:
     @staticmethod
     def salvar(sala):
         db.session.add(sala)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            raise
 
     # READ (todos)
     @staticmethod
