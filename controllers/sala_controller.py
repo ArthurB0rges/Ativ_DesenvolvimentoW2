@@ -1,7 +1,7 @@
 # Controller de PAGINAS - todas as rotas daqui respondem HTML ou
 # redirecionamento.
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import (Blueprint, render_template, request, redirect, url_for, flash, current_app)
 from flask import session
 from models.sala import Sala
 from dao.sala_dao import SalaDAO
@@ -32,6 +32,11 @@ def index():
     # Conte aqui, na SESSAO, quantas vezes esta pessoa abriu a listagem.
     # A chave deve se chamar "acessos". O template ja exibe o valor.
     # =================================================================
+    # acessos = current_app.extensions["acessos"]
+    # if request.method == "GET":
+    #     session["visitas"] = session.get("visitas", 0) + 1
+    #     with acessos["lock"]:
+    #         acessos["total"] += 1 não funcionou
 
     return render_template("index.html", salas=SalaDAO.listar())
 

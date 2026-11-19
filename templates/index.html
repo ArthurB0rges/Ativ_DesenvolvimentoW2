@@ -49,7 +49,7 @@
   </ul>
 
   <p class="escopos">
-    Acessos nesta sessão: <strong id="contador">{{ session["acessos"] }}</strong>
+    Acessos nesta sessão: <strong id="contador">{{ session.get('visitas', 0) }}</strong>
   </p>
 
 {% endblock %}
