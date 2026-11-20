@@ -41,7 +41,7 @@ def buscar_sala(id):
     return sala
 
 
-@api_bp.get("/sala/<int:id>")
+@api_bp.get("/salas/<int:id>")
 def buscar(id):
     return jsonify(buscar_sala(id))
 
@@ -51,3 +51,7 @@ def buscar(id):
 # Sucesso: 204, sem corpo. Se o id nao existir: 404 com
 # {"erro": "Sala nao encontrada."}.
 # =====================================================================
+@api_bp.delete("/salas/<int:id>")
+def excluir(id):
+    SalaDAO.excluir(buscar_sala(id))
+    return "", 204

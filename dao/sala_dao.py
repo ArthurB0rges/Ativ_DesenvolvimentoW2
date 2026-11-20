@@ -24,7 +24,7 @@ class SalaDAO:
     # READ (um) - devolve o objeto ou None
     @staticmethod
     def buscar_por_id(id):
-        return Sala.query.get(id)
+        return db.session.get(Sala, id)
 
     # UPDATE
     @staticmethod
